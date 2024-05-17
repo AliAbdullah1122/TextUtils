@@ -8,7 +8,6 @@ import Alert from "./components/Alert";
 
 function App() {
   const [mode, setMode] = useState("light");
-  const [newMode, setNewMode] = useState("light");
   const [alert, setAlert] = useState(null);
 
   const showAlert = (message, type) => {
@@ -34,17 +33,7 @@ function App() {
       document.title ='TextUtils - Light Mode'
     }
   };
-  const toggleModeReddish = () => {
-    if (mode === "light") {
-      setMode("dark");
-      document.body.style.backgroundColor = "#D31E1E";
-      showAlert("Reddish mode has been enabled", "success");
-    } else {
-      setMode("light");
-      document.body.style.backgroundColor = "white";
-      showAlert("Whitte mode has been enabled", "success");
-    }
-  };
+ 
   return (
     <>
     {/* <Router>
@@ -71,7 +60,7 @@ function App() {
         </Switch>
       </div>
       </Router> */}
-      {/* <BrowserRouter> */}
+      <BrowserRouter>
         <Navbar
           title="TextUtils"
           abouttitle="About Us"
@@ -80,25 +69,25 @@ function App() {
           
         />
 
-        <Alert alert={alert} />
+        <Alert alert={alert}/>
         <div className="container my-3" mode={mode}>
-          {/* <Routes>
-            <Route path="/about" element={<About />} />
+          <Routes>
+            <Route path="/about" element={<About  mode={mode}/>} />
           </Routes>
           <Routes>
             <Route
               path="/"
-              element={ */}
+              element={
                 <TxetForm
                   showAlert={showAlert}
-                  label="Enter the text to analyze below"
+                  label="Try TextUtils - Word Counter | Character Counter, Remove extra spaces"
                   mode={mode}
                 />
-              {/* }
+              }
             />
-          </Routes> */}
+          </Routes>
         </div>
-      {/* </BrowserRouter> */}
+      </BrowserRouter>
     </>
   );
 }

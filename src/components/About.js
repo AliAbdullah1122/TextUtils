@@ -1,34 +1,41 @@
 import React, { useState } from "react";
 
-export default function About() {
-  const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white",
-  });
-  const [btnText, setBtnText] = useState("Enable Dark Mode");
 
-  const toggleClick = () => {
-    if (myStyle.color === "black") {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black",
+export default function About(props) {
+  // const [myStyle, setMyStyle] = useState({
+  //   color: "black",
+  //   backgroundColor: "white",
+  // });
+  // const [btnText, setBtnText] = useState("Enable Dark Mode");
 
-        border:'1px solid white'
-      });
-      setBtnText("Enable Dark Mode");
-    } else {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white",
-      });
-      setBtnText("Enable Light Mode");
-    }
+  // const toggleClick = () => {
+  //   if (myStyle.color === "black") {
+  //     setMyStyle({
+  //       color: "white",
+  //       backgroundColor: "black",
+
+  //       border:'1px solid white'
+  //     });
+  //     setBtnText("Enable Dark Mode");
+  //   } else {
+  //     setMyStyle({
+  //       color: "black",
+  //       backgroundColor: "white",
+  //     });
+  //     setBtnText("Enable Light Mode");
+  //   }
+  // };
+  let myStyle = {
+    color: props.mode === "dark" ? "white" : "#042743",
+    backgroundColor: props.mode === "dark" ? "rgb(36,74,104)" : "white",
+    // border :'2px solid',
+    // borderColor:"dark" ? "white" : "#042743"
   };
 
   return (
     <div className="container" style={myStyle}>
-      <h2 className="my-3">About Us</h2>
-      <div className="accordion" id="accordionExample" >
+      <h1 className="my-3" >About Us</h1>
+      <div className="accordion" id="accordionExample">
         <div className="accordion-item" style={myStyle}>
           <h2 className="accordion-header">
             <button
@@ -40,14 +47,13 @@ export default function About() {
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              Accordion Item #1
+              <strong> Analyze your Text</strong>
             </button>
           </h2>
           <div
             id="collapseOne"
             className="accordion-collapse collapse show"
             data-bs-parent="#accordionExample"
-
           >
             <div className="accordion-body" style={myStyle}>
               <strong>This is the first item's accordion body.</strong> It is
@@ -72,7 +78,7 @@ export default function About() {
               aria-expanded="false"
               aria-controls="collapseTwo"
             >
-              Accordion Item #2
+              <strong> Free to Use</strong>
             </button>
           </h2>
           <div
@@ -81,8 +87,6 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              
-              
               <strong>This is the second item's accordion body.</strong> It is
               hidden by default, until the collapse plugin adds the appropriate
               classNamees that we use to style each element. These classNamees
@@ -105,7 +109,7 @@ export default function About() {
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              Accordion Item #3
+              <strong> Browser Compatible</strong>
             </button>
           </h2>
           <div
@@ -126,12 +130,11 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div className="conatiner my-3">
+      {/* <div className="conatiner my-3">
         <button onClick={toggleClick} type="button" className="btn btn-primary">
           {btnText}
         </button>
-      </div>
+      </div> */}
     </div>
-    
   );
 }
